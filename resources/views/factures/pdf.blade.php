@@ -34,7 +34,7 @@ th,td{
 
 <body>
 
-<h1>PELTAO VISION SHOP</h1>
+<h1>ALLAH-ADJIM</h1>
 
 <h3>FACTURE</h3>
 
@@ -68,7 +68,7 @@ Total : {{ $commande->montant_total }} FCFA
 
 <p>Merci pour votre confiance.</p>
 
-<p><strong>PELTAO VISION SHOP</strong></p>
+<p><strong>ALLAH-ADJIM</strong></p>
 
 </body>
 </html>

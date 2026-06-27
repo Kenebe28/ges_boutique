@@ -6,7 +6,7 @@
 
     <div class="bg-primary text-white p-5 rounded shadow mb-4">
         <h1 class="display-4">
-            Bienvenue chez PELTAO VISION SHOP
+            Bienvenue chez ALLAH-ADJIM
         </h1>
 
         <p class="lead">
@@ -92,11 +92,11 @@
         <div class="card-body">
 
             <h3 class="text-primary">
-                À propos de PELTAO VISION SHOP
+                À propos de ALLAH-ADJIM
             </h3>
 
             <p>
-                PELTAO VISION SHOP est une plateforme de gestion commerciale
+                ALLAH-ADJIM est une plateforme de gestion commerciale
                 conçue pour faciliter le suivi des clients, des produits,
                 des commandes et des factures.
             </p>

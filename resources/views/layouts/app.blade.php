@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>PELTAO VISION SHOP</title>
+<title>ALLAH-ADJIM</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -13,78 +13,74 @@
 
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
 body{
-    background:#eef3f9;
-    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+background:#f5f5f5;
 }
 
 .sidebar{
 
 position:fixed;
-
-left:0;
-
 top:0;
-
-width:260px;
-
+left:0;
+width:270px;
 height:100vh;
-
-background:#0d47a1;
-
-padding-top:20px;
-
-box-shadow:0 0 20px rgba(0,0,0,.2);
+background:#111111;
+box-shadow:5px 0 20px rgba(0,0,0,.3);
 
 }
 
 .logo{
 
+padding:30px;
 text-align:center;
-
-color:white;
-
-font-size:24px;
-
-font-weight:bold;
-
-margin-bottom:40px;
+border-bottom:1px solid rgba(255,255,255,.08);
 
 }
 
 .logo i{
 
-font-size:55px;
+font-size:65px;
+color:#ff7300;
 
-margin-bottom:10px;
+}
 
-display:block;
+.logo h2{
+
+margin-top:10px;
+font-weight:bold;
+color:white;
+
+}
+
+.logo p{
+
+color:#ff7300;
+font-size:14px;
 
 }
 
 .sidebar a{
 
 display:block;
-
-padding:15px 25px;
-
-color:white;
-
+padding:18px 25px;
 text-decoration:none;
-
+color:white;
 font-size:17px;
-
-transition:.3s;
+transition:.35s;
 
 }
 
 .sidebar a:hover{
 
-background:white;
-
-color:#0d47a1;
-
-padding-left:35px;
+background:#ff7300;
+padding-left:40px;
 
 }
 
@@ -96,99 +92,147 @@ margin-right:12px;
 
 .main{
 
-margin-left:260px;
-
+margin-left:270px;
 padding:30px;
 
 }
 
-.navbar{
+.topbar{
 
 background:white;
-
-border-radius:15px;
-
-box-shadow:0 5px 20px rgba(0,0,0,.1);
-
+padding:20px;
+border-radius:18px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+display:flex;
+justify-content:space-between;
+align-items:center;
 margin-bottom:30px;
+
+}
+
+.topbar h3{
+
+font-weight:bold;
+
+}
+
+.orange{
+
+color:#ff7300;
+
+}
+
+.user{
+
+background:#ff7300;
+color:white;
+padding:10px 20px;
+border-radius:30px;
 
 }
 
 .card{
 
 border:none;
-
 border-radius:18px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-
+box-shadow:0 8px 25px rgba(0,0,0,.08);
 transition:.4s;
 
 }
 
 .card:hover{
 
-transform:translateY(-5px);
+transform:translateY(-8px);
+
+}
+
+.card-body{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
 
 }
 
 .icon{
 
-font-size:45px;
-
+width:80px;
+height:80px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
 color:white;
 
-width:80px;
+}
 
-height:80px;
+.orange-bg{
 
-border-radius:50%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
+background:#ff7300;
 
 }
 
-.blue{
+.black-bg{
 
-background:#1565c0;
+background:#111;
 
 }
 
-.green{
+.blue-bg{
+
+background:#3949ab;
+
+}
+
+.green-bg{
 
 background:#2e7d32;
 
 }
 
-.orange{
+.number{
 
-background:#ef6c00;
-
-}
-
-.red{
-
-background:#c62828;
+font-size:35px;
+font-weight:bold;
 
 }
 
 table{
 
 background:white;
-
 border-radius:15px;
-
 overflow:hidden;
 
 }
 
-.btn{
+.table thead{
 
-border-radius:10px;
+background:#111111;
+color:white;
+
+}
+
+.btn-orange{
+
+background:#ff7300;
+color:white;
+border:none;
+
+}
+
+.btn-orange:hover{
+
+background:#e56700;
+color:white;
+
+}
+
+footer{
+
+margin-top:40px;
+text-align:center;
+color:#888;
 
 }
 
@@ -202,9 +246,11 @@ border-radius:10px;
 
 <div class="logo">
 
-<i class="bi bi-shop-window"></i>
+<i class="bi bi-shop"></i>
 
-PELTAO VISION SHOP
+<h2>ALLAH-ADJIM</h2>
+
+<p>Sales Management System</p>
 
 </div>
 
@@ -252,32 +298,35 @@ Factures
 
 <div class="main">
 
-<nav class="navbar p-3">
+<div class="topbar">
 
-<div class="container-fluid">
+<h3>
 
-<h4 class="text-primary fw-bold">
+Bienvenue chez <span class="orange">ALLAH-ADJIM</span>
 
-Bienvenue chez PELTAO VISION SHOP
+</h3>
 
-</h4>
-
-<span class="badge bg-primary fs-6">
+<div class="user">
 
 <i class="bi bi-person-circle"></i>
 
 Administrateur
 
-</span>
-
 </div>
 
-</nav>
+</div>
 
 @yield('content')
 
+<footer>
+
+© 2026 ALLAH-ADJIM | Tous droits réservés
+
+</footer>
+
 </div>
 
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+</body>
 </html>
