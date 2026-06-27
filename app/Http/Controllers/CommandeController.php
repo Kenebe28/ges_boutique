@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produit;
-use App\Models\Commande;
 use App\Models\Client;
+use App\Models\Commande;
+use App\Models\LigneCommande;
+use App\Models\Produit;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
@@ -18,30 +19,47 @@ class CommandeController extends Controller
     public function create()
     {
         $clients = Client::all();
-        return view('commandes.create', compact('clients'));
+        $produits = Produit::all();
+
+        return view('commandes.create', compact('clients', 'produits'));
     }
 
     public function store(Request $request)
-{
-    $produit = Produit::findOrFail($request->produit_id);
+    {
+        $request->validate([
+            'client_id' => 'required',
+            'produit_id' => 'required',
+            'date_commande' => 'required',
+            'quantite' => 'required|integer|min:1',
+        ]);
 
-    if ($produit->stock < $request->quantite) {
-        return back()->with('error', 'Stock insuffisant');
+        $produit = Produit::findOrFail($request->produit_id);
+
+        if ($produit->stock < $request->quantite) {
+            return back()->with('error', 'Stock insuffisant.');
+        }
+
+        $montant = $produit->prix_unitaire * $request->quantite;
+
+        $commande = Commande::create([
+            'client_id' => $request->client_id,
+            'date_commande' => $request->date_commande,
+            'montant_total' => $montant,
+        ]);
+
+        LigneCommande::create([
+            'commande_id' => $commande->id,
+            'produit_id' => $produit->id,
+            'quantite' => $request->quantite,
+            'prix_unitaire' => $produit->prix_unitaire,
+        ]);
+
+        $produit->stock -= $request->quantite;
+        $produit->save();
+
+        return redirect()->route('commandes.index')
+            ->with('success', 'Commande enregistrée avec succès.');
     }
-
-    $montant = $produit->prix_unitaire * $request->quantite;
-
-    Commande::create([
-        'client_id' => $request->client_id,
-        'date_commande' => $request->date_commande,
-        'montant_total' => $montant
-    ]);
-
-    $produit->stock = $produit->stock - $request->quantite;
-    $produit->save();
-
-    return redirect()->route('commandes.index');
-}
 
     public function show(Commande $commande)
     {
@@ -61,6 +79,8 @@ class CommandeController extends Controller
     public function destroy(Commande $commande)
     {
         $commande->delete();
-        return redirect()->route('commandes.index');
+
+        return redirect()->route('commandes.index')
+            ->with('success', 'Commande supprimée avec succès.');
     }
 }

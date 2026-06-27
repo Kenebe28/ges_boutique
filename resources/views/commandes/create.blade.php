@@ -2,56 +2,159 @@
 <html>
 <head>
     <title>Nouvelle Commande</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-5">
 
-<h2>Nouvelle Commande</h2>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+
+<h3>Nouvelle Commande - PELTAO VISION SHOP</h3>
+
+</div>
+
+<div class="card-body">
 
 <form action="{{ route('commandes.store') }}" method="POST">
-    @csrf
 
-    <label>Client</label>
+@csrf
 
-    <select name="client_id" class="form-control mb-3">
-        @foreach($clients as $client)
-            <option value="{{ $client->id }}">
-                {{ $client->nom }} {{ $client->prenom }}
-            </option>
-        @endforeach
-    </select>
+<div class="mb-3">
 
-    <label>Date</label>
-    <input type="date" name="date_commande" class="form-control mb-3">
+<label>Client</label>
 
-    <label>Montant</label>
-    <label>Prix unitaire</label>
-<input type="number" id="prix" class="form-control mb-3">
+<select name="client_id" class="form-control">
+
+@foreach($clients as $client)
+
+<option value="{{ $client->id }}">
+{{ $client->nom }} {{ $client->prenom }}
+</option>
+
+@endforeach
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Produit</label>
+
+<select name="produit_id" id="produit" class="form-control">
+
+@foreach($produits as $produit)
+
+<option
+value="{{ $produit->id }}"
+data-prix="{{ $produit->prix_unitaire }}">
+
+{{ $produit->designation }}
+(Stock : {{ $produit->stock }})
+
+</option>
+
+@endforeach
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Date</label>
+
+<input
+type="date"
+name="date_commande"
+class="form-control"
+value="{{ date('Y-m-d') }}">
+
+</div>
+
+<div class="mb-3">
+
+<label>Prix Unitaire</label>
+
+<input
+type="number"
+id="prix"
+class="form-control"
+readonly>
+
+</div>
+
+<div class="mb-3">
 
 <label>Quantité</label>
-<input type="number" id="quantite" class="form-control mb-3">
+
+<input
+type="number"
+id="quantite"
+name="quantite"
+class="form-control"
+value="1"
+min="1">
+
+</div>
+
+<div class="mb-3">
 
 <label>Montant Total</label>
-<input type="number" id="montant" name="montant_total" class="form-control mb-3" readonly>
 
-    <button class="btn btn-success">
-        Enregistrer
-    </button>
+<input
+type="number"
+id="montant"
+class="form-control"
+readonly>
+
+</div>
+
+<button class="btn btn-success">
+
+Enregistrer la commande
+
+</button>
+
 </form>
 
-</body>
+</div>
+
+</div>
+
+</div>
+
 <script>
 
-document.getElementById('prix').addEventListener('input', calculer);
-document.getElementById('quantite').addEventListener('input', calculer);
+const produit=document.getElementById('produit');
+const prix=document.getElementById('prix');
+const quantite=document.getElementById('quantite');
+const montant=document.getElementById('montant');
 
-function calculer()
-{
-    let prix = document.getElementById('prix').value;
-    let quantite = document.getElementById('quantite').value;
+function calculer(){
 
-    document.getElementById('montant').value = prix * quantite;
+let p=produit.options[produit.selectedIndex].dataset.prix;
+
+prix.value=p;
+
+montant.value=p*quantite.value;
+
 }
 
+produit.addEventListener('change',calculer);
+
+quantite.addEventListener('input',calculer);
+
+calculer();
+
 </script>
+
+</body>
+
 </html>

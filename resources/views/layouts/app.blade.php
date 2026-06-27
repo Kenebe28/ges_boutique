@@ -1,56 +1,195 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Gestion Boutique</title>
+<title>PELTAO VISION SHOP</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 <style>
 
-bodybody{
-    background:#eef5ff;
-    font-family:Arial, sans-serif;
+body{
+    background:#eef3f9;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
 }
 
 .sidebar{
-    min-height:100vh;
-    background:#0d47a1;
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:260px;
+
+height:100vh;
+
+background:#0d47a1;
+
+padding-top:20px;
+
+box-shadow:0 0 20px rgba(0,0,0,.2);
+
 }
 
-.sidebar h3{
-    color:white;
-    font-weight:bold;
+.logo{
+
+text-align:center;
+
+color:white;
+
+font-size:24px;
+
+font-weight:bold;
+
+margin-bottom:40px;
+
+}
+
+.logo i{
+
+font-size:55px;
+
+margin-bottom:10px;
+
+display:block;
+
 }
 
 .sidebar a{
-    color:white;
-    display:block;
-    padding:15px;
-    text-decoration:none;
-    border-radius:8px;
-    margin:5px;
+
+display:block;
+
+padding:15px 25px;
+
+color:white;
+
+text-decoration:none;
+
+font-size:17px;
+
+transition:.3s;
+
 }
 
 .sidebar a:hover{
-    background:#1976d2;
+
+background:white;
+
+color:#0d47a1;
+
+padding-left:35px;
+
+}
+
+.sidebar i{
+
+margin-right:12px;
+
+}
+
+.main{
+
+margin-left:260px;
+
+padding:30px;
+
+}
+
+.navbar{
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+
+margin-bottom:30px;
+
 }
 
 .card{
-    border:none;
-    border-radius:15px;
+
+border:none;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.4s;
+
 }
 
-.bg-primary{
-    background:linear-gradient(
-        135deg,
-        #0d47a1,
-        #1976d2
-    ) !important;
+.card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.icon{
+
+font-size:45px;
+
+color:white;
+
+width:80px;
+
+height:80px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+.blue{
+
+background:#1565c0;
+
+}
+
+.green{
+
+background:#2e7d32;
+
+}
+
+.orange{
+
+background:#ef6c00;
+
+}
+
+.red{
+
+background:#c62828;
+
+}
+
+table{
+
+background:white;
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+.btn{
+
+border-radius:10px;
+
 }
 
 </style>
@@ -59,47 +198,86 @@ bodybody{
 
 <body>
 
-<div class="container-fluid">
+<div class="sidebar">
 
-<div class="row">
+<div class="logo">
 
-<div class="col-md-2 sidebar">
+<i class="bi bi-shop-window"></i>
 
-<h3 class="text-center mt-3">
-Boutique
-</h3>
+PELTAO VISION SHOP
+
+</div>
+
+<a href="/dashboard">
+
+<i class="bi bi-speedometer2"></i>
+
+Dashboard
+
+</a>
 
 <a href="/clients">
-<i class="fas fa-users"></i>
- Clients
+
+<i class="bi bi-people-fill"></i>
+
+Clients
+
 </a>
 
 <a href="/produits">
-<i class="fas fa-box"></i>
- Produits
+
+<i class="bi bi-box-seam-fill"></i>
+
+Produits
+
 </a>
 
 <a href="/commandes">
-<i class="fas fa-cart-shopping"></i>
- Commandes
+
+<i class="bi bi-cart-check-fill"></i>
+
+Commandes
+
 </a>
 
-<a href="/factures">
-<i class="fas fa-file-pdf"></i>
- Factures
+<a href="/facture">
+
+<i class="bi bi-receipt-cutoff"></i>
+
+Factures
+
 </a>
 
 </div>
 
-<div class="col-md-10 p-4">
+<div class="main">
+
+<nav class="navbar p-3">
+
+<div class="container-fluid">
+
+<h4 class="text-primary fw-bold">
+
+Bienvenue chez PELTAO VISION SHOP
+
+</h4>
+
+<span class="badge bg-primary fs-6">
+
+<i class="bi bi-person-circle"></i>
+
+Administrateur
+
+</span>
+
+</div>
+
+</nav>
 
 @yield('content')
 
 </div>
 
-</div>
-
-</div>
-
 </body>
+
 </html>
